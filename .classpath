@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
 	<classpathentry kind="src" path="src_java8_new_features"/>
 	<classpathentry kind="src" path="src_java9_new_features"/>
 	<classpathentry kind="src" path="src_java10_new_features"/>
+	<classpathentry kind="src" path="src_java11_new_features"/>
+	<classpathentry kind="src" path="src_java12_new_features"/>
+	<classpathentry kind="src" path="src_java13_new_features"/>
+	<classpathentry kind="src" path="src_java14_new_features"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
