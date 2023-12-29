@@ -12,13 +12,30 @@ public class VarExample {
 		
 		var fruitList = List.of("Grape", "Pear", "Apple", "Banana", "Pinapple");
 		
+		System.out.println("<<< 1 >>>");
 		for (var fruit : fruitList) {
 			System.out.println(fruit);
 		}
 		
+		System.out.println("<<< 2 >>>");
 		for (var i = 0; i < fruitList.size(); i++) {
 			System.out.println(fruitList.get(i));
 		}
+		
+		System.out.println("<<< 3 >>>");
+		fruitList.forEach(System.out::println);
+		
+		System.out.println("<<< 4 >>>");
+		fruitList.stream().filter(f -> f.toUpperCase().endsWith("E"))
+				.forEach(System.out::println);
+		
+		System.out.println("<<< 5 >>>");
+		fruitList.stream().filter(f -> f.matches("(?i).*E"))
+				.forEach(System.out::println);
+		
+		var list = fruitList.stream().filter(f -> f.matches("(?i).*E")).sorted()
+				.toList();
+		System.out.println("<<< " + list + " >>>");
 		
 		var exception = new ArrayIndexOutOfBoundsException();
 		String message = exception.getMessage();
