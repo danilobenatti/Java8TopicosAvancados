@@ -1,4 +1,4 @@
-package javaScript_Nashorn;
+package javascript_nashorn;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +15,7 @@ public class ExemploNashorn {
 	public static void main(String[] args) {
 		
 		ScriptEngine engine = new ScriptEngineManager()
-				.getEngineByName("Nashorn");
+				.getEngineByName("nashorn");
 		
 		Bindings bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
 		
@@ -23,7 +23,7 @@ public class ExemploNashorn {
 		
 		try {
 			engine.eval(new FileReader(
-					new File("src/javaScript_Nashorn/OlaMundo.js")
+					new File("java8/javaScript_nashorn/OlaMundo.js")
 							.getAbsoluteFile()));
 		} catch (FileNotFoundException | ScriptException e) {
 			e.printStackTrace();

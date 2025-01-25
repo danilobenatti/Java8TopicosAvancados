@@ -6,10 +6,24 @@ interface Image {
 	
 }
 
+interface Square {
+	
+	void size(Double l);
+	
+}
+
 class Rectangle {
 	
-	public Rectangle(Double a, Double b) {
-		System.out.printf("Dimension: height %.2f, width %.2f%n", a, b);
+	public void size(Double a, Double b) {
+		System.out.printf("Rectangle: height %.2f; width %.2f%n", a, b);
+	}
+	
+}
+
+class Area {
+	
+	public void value(Double x) {
+		System.out.printf("Square area: %.2f", Math.pow(x, 2));
 	}
 	
 }
@@ -18,9 +32,15 @@ public class ExemploMethodReference2 {
 	
 	public static void main(String[] args) {
 		
-		Image image = Rectangle::new;
+		Rectangle rec = new Rectangle();
+		
+		Image image = rec::size;
 		image.drawing(5.666, 6.777);
 		
+		Area area = new Area();
+		
+		Square square = area::value;
+		square.size(5.666);
+		
 	}
-	
 }

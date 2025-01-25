@@ -1,5 +1,6 @@
 package inferenciaDeTiposVar;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class VarExample {
@@ -33,8 +34,8 @@ public class VarExample {
 		fruitList.stream().filter(f -> f.matches("(?i).*E"))
 				.forEach(System.out::println);
 		
-		var list = fruitList.stream().filter(f -> f.matches("(?i).*E")).sorted()
-				.toList();
+		var list = Arrays.asList(fruitList.stream()
+				.filter(f -> f.matches("(?i).*E")).sorted().toArray());
 		System.out.println("<<< " + list + " >>>");
 		
 		var exception = new ArrayIndexOutOfBoundsException();

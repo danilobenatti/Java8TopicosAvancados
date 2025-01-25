@@ -7,9 +7,9 @@ import java.util.List;
 
 class Product {
 	
-	long id;
-	String name;
-	Double price;
+	private long id;
+	private String name;
+	private Double price;
 	
 	public Product() {
 		this.id = 0;
@@ -49,8 +49,10 @@ class Product {
 	
 	@Override
 	public String toString() {
-		return "Product [id = " + id + ", name = " + name + ", price = " + price
-				+ "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Product [id=").append(id).append(", name=").append(name)
+				.append(", price=").append(price).append("]");
+		return builder.toString();
 	}
 	
 }
@@ -65,6 +67,9 @@ class ProductOrderByPrice implements Comparator<Product> {
 }
 
 class PrintProducts {
+	
+	private PrintProducts() {
+	}
 	
 	public static void print(List<Product> list) {
 		if (!list.isEmpty()) {
@@ -94,7 +99,7 @@ public class Exemplo001Stream {
 		List<Product> refrigeratorList = new ArrayList<>();
 		for (Product product : productList) {
 			if (product.getName().toUpperCase()
-					.contains(("geladeira").toUpperCase())) {
+					.contains(("Geladeira").toUpperCase())) {
 				refrigeratorList.add(product);
 			}
 		}
@@ -117,24 +122,24 @@ public class Exemplo001Stream {
 		// Lambda + Stream [pipeline process]
 		System.out.println("--- #2 ---");
 		productList.stream()
-				.filter(p -> p.getName().toLowerCase().contains("geladeira"))
+				.filter(p -> p.getName().toLowerCase().contains("Geladeira"))
 				.sorted((p1, p2) -> p1.getPrice().compareTo(p2.getPrice()))
 				.map(p -> p.getName().toUpperCase())
 				.forEach(System.out::println);
 		
 		System.out.println("--- #3 ---");
 		productList.stream()
-		.takeWhile(p -> p.getName().toLowerCase().contains("geladeira"))
-		.sorted((p1, p2) -> p1.getPrice().compareTo(p2.getPrice()))
-		.map(p -> p.getName().toUpperCase())
-		.forEach(System.out::println);
+				.takeWhile(p -> p.getName().toLowerCase().contains("geladeira"))
+				.sorted((p1, p2) -> p1.getPrice().compareTo(p2.getPrice()))
+				.map(p -> p.getName().toUpperCase())
+				.forEach(System.out::println);
 		
 		System.out.println("--- #4 ---");
 		productList.stream()
-		.dropWhile(p -> p.getName().toLowerCase().contains("geladeira"))
-		.sorted((p1, p2) -> p1.getPrice().compareTo(p2.getPrice()))
-		.map(p -> p.getName().toUpperCase())
-		.forEach(System.out::println);
+				.dropWhile(p -> p.getName().toLowerCase().contains("geladeira"))
+				.sorted((p1, p2) -> p1.getPrice().compareTo(p2.getPrice()))
+				.map(p -> p.getName().toUpperCase())
+				.forEach(System.out::println);
 		
 		System.out.println("--- #5 ---");
 		PrintProducts.print(productList);

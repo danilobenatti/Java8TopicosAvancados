@@ -11,8 +11,8 @@ class Course {
 	private List<Student> students;
 	
 	public Course(String title) {
-		this.setTitle(title);
-		this.setStudents(new ArrayList<>());
+		this.title = title;
+		this.students = new ArrayList<>();
 	}
 	
 	public String getTitle() {
@@ -40,7 +40,7 @@ class Student {
 	private String name;
 	
 	public Student(String name) {
-		this.setName(name);
+		this.name = name;
 		this.registry = Optional.empty();
 	}
 	
@@ -48,8 +48,8 @@ class Student {
 		return registry;
 	}
 	
-	public void setRegistry(Optional<Registry> registry) {
-		this.registry = registry;
+	public void setRegistry(Registry registry) {
+		this.registry = Optional.of(registry);
 	}
 	
 	public String getName() {
@@ -58,6 +58,18 @@ class Student {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Student [");
+		builder.append("registry=");
+		builder.append(this.registry.get().getCode());
+		builder.append(", name=");
+		builder.append(this.name);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 }
@@ -87,23 +99,31 @@ public class Exemplo004Optional {
 		Course course = new Course(null);
 		course.setTitle("Administração");
 		
-		Student student1 = new Student("João");
-		student1.setRegistry(Optional.of(new Registry("10A20")));
+		Student student1 = new Student("João Fonseca");
+		student1.setRegistry(new Registry("10A20"));
 		course.getStudents().add(student1);
 		
-		Student student2 = new Student("Maria");
-		student2.setRegistry(Optional.of(new Registry("10B10")));
+		Student student2 = new Student("Ana Paula");
+		student2.setRegistry(new Registry("10B10"));
 		course.getStudents().add(student2);
 		
-		Student student3 = new Student("Pedro");
+		// not registered student
+		Student student3 = new Student("Pedro Henrique");
 		course.getStudents().add(student3);
 		
-		Student student4 = new Student("Paulo");
-		student4.setRegistry(Optional.of(new Registry("10A10")));
+		Student student4 = new Student("Paulo Guedes");
+		student4.setRegistry(new Registry("10A10"));
 		course.getStudents().add(student4);
 		
-		course.getStudents().stream().filter(t -> t.getRegistry().isPresent())
-				.forEach(t -> System.out.println(
-						t.getName() + ", " + t.getRegistry().get().getCode()));
+		/**
+		 * course.getStudents().forEach(System.out::println);
+		 */
+		
+		course.getStudents().stream().filter(s -> s.getRegistry().isPresent())
+				.forEach(System.out::println);
+		
+		course.getStudents().stream().forEach(s -> s.getRegistry()
+				.ifPresent(r -> System.out.println(r.getCode())));
+		
 	}
 }

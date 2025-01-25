@@ -1,4 +1,4 @@
-package reflectMethod;
+package reflect_method;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -6,9 +6,11 @@ import java.lang.reflect.Parameter;
 
 class Product {
 	
-	long id;
-	String name;
-	Double price;
+	private long id;
+	
+	private String name;
+	
+	private Double price;
 	
 	public Product() {
 		this.id = 0;
@@ -59,14 +61,14 @@ public class ExampleReflection {
 	public static void main(String[] args) {
 		
 		// Class Instance product
-		Product p1 = new Product(1, "Refrigerador Frost-Free", 3500.00);
-		System.out.println(p1);
+		Product p = new Product(1, "Refrigerador Frost-Free", 3500.00);
+		System.out.println(p);
 		
 		// Class Instance for Class
-		Class<?> c1 = p1.getClass();
+		Class<?> c = p.getClass();
 		
 		// All existing methods into product class
-		Method[] declaredMethods = c1.getDeclaredMethods();
+		Method[] declaredMethods = c.getDeclaredMethods();
 		for (Method method : declaredMethods) {
 			System.out.printf("%n%s", method.getName());
 			Parameter[] parameters = method.getParameters();
@@ -76,7 +78,7 @@ public class ExampleReflection {
 		}
 		
 		// All existing fields into product class
-		Field[] declaredFields = c1.getDeclaredFields();
+		Field[] declaredFields = c.getDeclaredFields();
 		for (Field field : declaredFields) {
 			System.out.printf("%n%s(%s)", field.getName(), field.getType());
 		}

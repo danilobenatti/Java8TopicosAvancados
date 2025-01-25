@@ -4,14 +4,14 @@ import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-@Retention(RetentionPolicy.RUNTIME)
-@interface Voltagens {
-	Voltagem[] value();
-}
-
 @Repeatable(Voltagens.class)
 @interface Voltagem {
 	String tensao();
+}
+
+@Retention(RetentionPolicy.RUNTIME)
+@interface Voltagens {
+	Voltagem[] value();
 }
 
 @Voltagem(tensao = "110V")
