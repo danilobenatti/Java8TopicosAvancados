@@ -1,4 +1,4 @@
-package http2Incubator;
+package http_incubator;
 
 import java.net.http.HttpClient;
 

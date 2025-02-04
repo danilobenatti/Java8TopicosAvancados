@@ -1,4 +1,4 @@
-package factoryMethod;
+package factory_method;
 
 import java.util.List;
 import java.util.Set;

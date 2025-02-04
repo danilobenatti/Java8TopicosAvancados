@@ -9,7 +9,7 @@ public class TryCatchExample {
 	
 	public static void main(String[] args) {
 		
-		File file = new File("./src_java9_new_features/try_catch/file.txt");
+		File file = new File("./java9/try_catch/file.txt");
 		try {
 			TryCatchExample.readFileTryCatchFinally(file.getAbsoluteFile());
 		} catch (IOException ex) {

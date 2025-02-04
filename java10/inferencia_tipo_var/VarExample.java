@@ -1,4 +1,4 @@
-package inferenciaDeTiposVar;
+package inferencia_tipo_var;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +9,7 @@ public class VarExample {
 		
 		String v1 = "Java ";
 		var v2 = 10;
+		
 		System.out.println(v1 + v2);
 		
 		var fruitList = List.of("Grape", "Pear", "Apple", "Banana", "Pinapple");
@@ -38,8 +39,8 @@ public class VarExample {
 				.filter(f -> f.matches("(?i).*E")).sorted().toArray());
 		System.out.println("<<< " + list + " >>>");
 		
-		var exception = new ArrayIndexOutOfBoundsException();
-		String message = exception.getMessage();
+		var ex = new ArrayIndexOutOfBoundsException();
+		String message = ex.getMessage();
 		System.out.println(message);
 	}
 	

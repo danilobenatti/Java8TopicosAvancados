@@ -1,4 +1,4 @@
-package privateInterface;
+package private_interface;
 
 public class TesteEventos {
 	
