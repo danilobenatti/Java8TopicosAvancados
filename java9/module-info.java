@@ -4,5 +4,5 @@ module moduloSaudacao {
 	
 	requires java.scripting;
 	requires java.net.http;
-	
+	requires java.desktop;
 }
