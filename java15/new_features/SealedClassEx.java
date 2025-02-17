@@ -13,7 +13,7 @@ public class SealedClassEx {
 		
 		Helicopter helicopter = new Helicopter();
 		console.println(helicopter.iCan());
-		
+		console.close();
 	}
 	
 }

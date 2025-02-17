@@ -4,6 +4,7 @@ import static java.time.DayOfWeek.*;
 import static java.time.format.TextStyle.*;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.ZoneId;
 import java.util.Locale;
 
@@ -36,8 +37,9 @@ public class NextDayOfWeekEx {
 		} while (i != weekday);
 		
 		String dayOfWeek = nextDay.getDayOfWeek().getDisplayName(FULL, locale);
-		JOptionPane.showMessageDialog(null,
-				String.format("Next %s is %s", dayOfWeek, nextDay), "Result",
+		String info = String.format("Next %s is %s%nIn %d days", dayOfWeek,
+				nextDay, today.datesUntil(nextDay, Period.ofDays(1)).count());
+		JOptionPane.showMessageDialog(null, info, "Result",
 				JOptionPane.INFORMATION_MESSAGE, null);
 		
 	}

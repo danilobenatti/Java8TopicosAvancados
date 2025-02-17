@@ -1,22 +1,27 @@
 package new_features;
 
+import java.io.PrintWriter;
 import java.lang.reflect.Field;
 
 public class ReflectionEx {
 	
 	public static void main(String[] args) {
 		
+		PrintWriter console = new PrintWriter(System.out, true);
+		
 		Product product = new Product();
 		
-		System.out.println(product.getCode());
+		console.println(product.getCode());
 		
 		try {
-			Field attribute = product.getClass().getDeclaredField("code");
-			attribute.setAccessible(true);
-			attribute.set(product, 654321);
-			System.out.println(product.getCode());
+			Field codeAttribute = product.getClass().getDeclaredField("code");
+			codeAttribute.setAccessible(true);
+			codeAttribute.set(product, 654321);
+			console.println(product.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			console.close();
 		}
 		
 	}
