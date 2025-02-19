@@ -1,5 +1,6 @@
 package switch_method;
 
+import java.io.PrintWriter;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
@@ -8,41 +9,45 @@ public class SwitchExample {
 	
 	public static void main(String[] args) {
 		
-		System.out.println("--- #1# ---");
-		System.out.println(formatter(1));
-		System.out.println(formatter(18L));
-		System.out.println(formatter(1.8f));
-		System.out.println(formatter(1.8));
-		System.out.println(formatter("1.8"));
-		System.out.println(formatter('A'));
-		System.out.println(formatter(true));
+		PrintWriter console = new PrintWriter(System.out, false);
 		
-		System.out.println("--- #2# ---");
-		System.out.println(formatterPatternSwitch(1));
-		System.out.println(formatterPatternSwitch(18L));
-		System.out.println(formatterPatternSwitch(1.8F));
-		System.out.println(formatterPatternSwitch(1.8));
-		System.out.println(formatterPatternSwitch("1.8"));
-		System.out.println(formatterPatternSwitch('A'));
-		System.out.println(formatterPatternSwitch(true));
+		console.println("--- #1# ---");
+		console.println(formatter(1));
+		console.println(formatter(18L));
+		console.println(formatter(1.8f));
+		console.println(formatter(1.8));
+		console.println(formatter("1.8"));
+		console.println(formatter('A'));
+		console.println(formatter(true));
 		
-		System.out.println("--- #3# ---");
-		System.out.println(switchMonth(Month.JULY));
-		System.out.println(switchMonth(Month.FEBRUARY));
-		System.out.println(switchMonth(Month.AUGUST));
-		System.out.println(switchDayOfWeek());
-		System.out.println(switchDayOfWeek(LocalDate.of(2025, 2, 8)));
+		console.println("--- #2# ---");
+		console.println(formatterPatternSwitch(1));
+		console.println(formatterPatternSwitch(18L));
+		console.println(formatterPatternSwitch(1.8F));
+		console.println(formatterPatternSwitch(1.8));
+		console.println(formatterPatternSwitch("1.8"));
+		console.println(formatterPatternSwitch('A'));
+		console.println(formatterPatternSwitch(true));
 		
-		System.out.println("--- #4# ---");
-		System.out.println(newSwitch(1));
-		System.out.println(newSwitch(18L));
-		System.out.println(newSwitch(1.8f));
-		System.out.println(newSwitch(1.8));
-		System.out.println(newSwitch("1.8"));
-		System.out.println(newSwitch('A'));
-		System.out.println(newSwitch(true));
-		System.out.println(newSwitch(null));
-		System.out.println(newSwitch(new Person("User", LocalDate.now())));
+		console.println("--- #3# ---");
+		console.println(switchMonth(Month.JULY));
+		console.println(switchMonth(Month.FEBRUARY));
+		console.println(switchMonth(Month.AUGUST));
+		console.println(switchDayOfWeek());
+		console.println(switchDayOfWeek(LocalDate.of(2025, 2, 8)));
+		
+		console.println("--- #4# ---");
+		console.println(newSwitch(1));
+		console.println(newSwitch(18L));
+		console.println(newSwitch(1.8f));
+		console.println(newSwitch(1.8));
+		console.println(newSwitch("1.8"));
+		console.println(newSwitch('A'));
+		console.println(newSwitch(true));
+		console.println(newSwitch(null));
+		console.println(newSwitch(new Person("User", LocalDate.now())));
+		
+		console.close();
 		
 	}
 	
@@ -120,7 +125,10 @@ public class SwitchExample {
 			case Boolean b -> String.format("It is a boolean %s", b);
 			case Person p -> String.format("It is a person %s", p);
 			case null -> "It is a null object";
-			default -> object.toString();
+			default -> {
+				object.toString();
+				yield "Object not defined.";
+			}
 		};
 	}
 	
